@@ -1,0 +1,7 @@
+# IDE files
+.idea
+
+# Compiled files
+dist
+vendor
+node_modules
