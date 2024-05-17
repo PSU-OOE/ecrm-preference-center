@@ -1,0 +1,80 @@
+{% set preferences %}
+  {% include '@psu-ooe/heading/heading.twig' with {
+    level: 2,
+    content: 'Subscription Preferences'
+  } only %}
+  {% include '@psu-ooe/divider/divider.twig' with {
+    variant: 'thin-slate-light'
+  } only %}
+  <br>
+  {% include '@psu-ooe/heading/heading.twig' with {
+    level: 3,
+    content: 'Email'
+  } only %}
+  <form action="#">
+    <fieldset class="webform-type-checkboxes">
+      <legend>Update Email Topic Preferences</legend>
+      <div class="fieldset-wrapper">
+        <div class="form-type-checkboxes">
+          <div class="form-type-checkbox form-item">
+            <div class="form-type-checkbox__wrapper">
+              <div class="form-item__element-wrapper">
+                <div class="form-item__element">
+                  <input type="checkbox" id="edit-checkboxes-events" name="preferences[events]" value="one" class="form-checkbox">
+                </div>
+              </div>
+              <label for="edit-checkboxes-events" class="form-item__label">Events (webinars and in-person)</label>
+            </div>
+          </div>
+          <div class="form-type-checkbox form-item">
+            <div class="form-type-checkbox__wrapper">
+              <div class="form-item__element-wrapper">
+                <div class="form-item__element">
+                  <input type="checkbox" id="edit-checkboxes-marketing" name="preferences[marketing]" value="two" class="form-checkbox">
+                </div>
+              </div>
+              <label for="edit-checkboxes-marketing" class="form-item__label">Marketing Communications</label>
+            </div>
+          </div>
+          <div class="form-type-checkbox form-item">
+            <div class="form-type-checkbox__wrapper">
+              <div class="form-item__element-wrapper">
+                <div class="form-item__element">
+                  <input type="checkbox" id="edit-checkboxes-application" name="preferences[application]" value="three" class="form-checkbox">
+                </div>
+              </div>
+              <label for="edit-checkboxes-application" class="form-item__label option">Application Communications</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <br>
+    <button class="cta-block">Update Topic Preferences</button>
+  </form>
+  <br>
+  <form action="#">
+    <p class="text text--size-large text--weight-semibold">You are currently opted into email.</p>
+    <button class="cta-block" aria-describedby="email-opt-out">Opt out of email</button>
+    <br>
+    <br>
+    <p id="email-opt-out">If you opt out you will be removed from promotional services, programs, and events. You will still receive details about your enrollment.</p>
+  </form>
+  <br>
+  {% include '@psu-ooe/divider/divider.twig' with {
+    variant: 'thin-slate-light'
+  } only %}
+  <br>
+  {% include '@psu-ooe/heading/heading.twig' with { level: 3, content: 'Text'} only %}
+  <form action="#">
+    <p class="text text--size-large text--weight-semibold">You are currently opted into text messages.</p>
+    <button class="cta-block" aria-describedby="email-opt-out">Opt out of text</button>
+    <br>
+    <br>
+    <p><a href="#">Privacy policy and SMS Terms and Conditions</a></p>
+  </form>
+{% endset %}
+{% include '@psu-ooe/callout/callout.twig' with {
+  content: preferences,
+  background: 'light-grey',
+} only %}

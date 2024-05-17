@@ -1,0 +1,83 @@
+<footer>
+  <div class="footer-bottom">
+    <div class="footer-bottom__geometrics">
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="hub-geometric-footer-bottom-gradient" x1="0.539" y1="0.24" x2="0.02" y2="0.066"
+                          gradientUnits="objectBoundingBox">
+            <stop offset="0" stop-color="var(--sky-blue)"></stop>
+            <stop offset="1" stop-color="var(--sky-blue)" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+      </svg>
+      {% include '@psu-ooe/sprite/sprite.twig' with { name: 'hub-geometric' } only %}
+    </div>
+    <div class="region region--footer-middle">
+      <div class="footer-contact">
+        <a class="back-to-top" href="#"
+           aria-label="Back to top">{% include '@psu-ooe/sprite/sprite.twig' with { name: 'fa-angle-up' } only %}</a>
+        <div class="footer-contact__contact">
+          <h2 class="visually-hidden heading">Contact information</h2>
+          <div class="footer-contact__item">
+            <span class="visually-hidden">phone</span>
+            {% include '@psu-ooe/sprite/sprite.twig' with { name: 'phone' } only %}
+            <a class="footer-contact__link" href="tel:{{ phone }}">{{ phone }}</a>
+          </div>
+          <div class="footer-contact__item">
+            <span class="visually-hidden">email</span>
+            {% include '@psu-ooe/sprite/sprite.twig' with { name: 'envelope' } only %}
+            <a class="footer-contact__link" href="mailto:{{ email }}">{{ email }}</a>
+          </div>
+          <div class="footer-contact__item">
+            <span class="footer-contact__prefix">U.S. Toll Free: </span>
+            <a class="footer-contact__link" href="tel:{{ phone_toll_free }}">{{ phone_toll_free }}</a>
+          </div>
+          <div class="footer-contact__item">
+            <span class="footer-contact__prefix">Fax: </span> {{ fax }}
+          </div>
+        </div>
+        <div class="footer-contact__address">{{ address_line_1 }}<br/> {{ address_line_2 }} <br/> {{ address_city }}
+          , {{ address_state_code }} {{ address_zip }} <br/>
+        </div>
+        <div class="footer-contact__icons">
+          {% set icons = [] %}
+          {% for platform, url in social_platforms %}
+            {% set icon %}
+              {% include '@psu-ooe/social-icon/social-icon.twig' with {
+                color: 'light',
+                icon: platform,
+                label: platform,
+                url: url
+              } only %}
+            {% endset %}
+            {% set icons = icons|merge([icon]) %}
+          {% endfor %}
+          {% if icons %}
+            {% include '@psu-ooe/social-icons/social-icons.twig' with {
+              social_icons: icons,
+            } only %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="region region--footer-bottom">
+      <div id="block-footer-legal" class="block block--system-menu-blocklegal footer-legal">
+        <div class="footer-legal__row">
+          <div class="psu-logo">
+            <a class="psu-logo__link" href="https://www.psu.edu"
+               aria-label="Penn State">{% include '@psu-ooe/sprite/sprite.twig' with { name: 'psu-mark' } only %}</a>
+          </div>
+          <h2 class="visually-hidden heading">Disclosures, policies, and copyright information</h2>
+          <ul class="menu-legal">
+            {% for label, url in legal_links %}
+              <li class="menu-legal__item">
+                <a class="menu-legal__link"
+                   href="{{ url }}">{% autoescape false %}{{ label|replace({'[[COPYRIGHT_YEAR]]': '<script>document.currentScript.outerHTML = (new Date()).getFullYear();</script>'}) }}{% endautoescape %}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

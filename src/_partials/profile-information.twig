@@ -1,0 +1,15 @@
+{% set profile_info %}
+  {% include '@psu-ooe/heading/heading.twig' with { content: 'Profile Information'} only %}
+  <div class="wysiwyg">
+    <ul>
+      <li>Name: <strong>John Doe</strong></li>
+      <li>Primary Email Address: <strong>******e@gmail.com</strong></li>
+      <li>Secondary Email Address: <strong>****b@gmail.com</strong></li>
+      <li>Phone Number: <strong>*******432</strong></li>
+    </ul>
+  </div>
+{% endset %}
+{% include '@psu-ooe/callout/callout.twig' with {
+  content: profile_info,
+  background: 'light-grey',
+} only %}

@@ -1,0 +1,17 @@
+{% embed '@psu-ooe/header/header.twig' %}
+  {% block dogear_content %}
+    <div class="block block--system-branding-block">
+      <a href="/" aria-label="Penn State World Campus">
+        {% include '@psu-ooe/sprite/sprite.twig' with { name: 'wc-mark' } only %}
+      </a>
+    </div>
+  {% endblock %}
+
+  {% block content %}
+    <div class="tagline">
+      <div class="tagline__text">
+        <div class="wysiwyg">A world of possibilities. <strong>Online.</strong></div>
+      </div>
+    </div>
+  {% endblock %}
+{% endembed %}

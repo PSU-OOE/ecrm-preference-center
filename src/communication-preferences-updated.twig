@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include '_partials/head.twig' with {
+  title: 'ECRM Design System Demo',
+  description: 'A simple static site generated for the ECRM Preference Center use case.',
+} only %}
+
+<body>
+{{ source('@psu-ooe/sprite/dist/sprites.svg') }}
+{% include '_partials/header.twig' %}
+{% include '@psu-ooe/page-title-banner-plain/page-title-banner-plain.twig' with {
+  title: 'Your Communication Preferences',
+} only %}
+<main>
+  {% include '@psu-ooe/alert/alert.twig' with {
+    content: "Your communication preferences have been successfully updated.",
+    severity: "status"
+  } only %}
+  {% include '_partials/profile-information.twig' %}
+  {% include '_partials/subscription-preferences.twig' %}
+</main>
+{%  include '_partials/footer.twig' %}
+</body>
+</html>

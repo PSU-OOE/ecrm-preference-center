@@ -4,6 +4,7 @@
   "author": "Luke Leber",
   "description": "Basic design system integration demo (without Twig)",
   "dependencies": {
+    "@psu-ooe/alert": "^1.0.4",
     "@psu-ooe/background-container": "^3.0.1",
     "@psu-ooe/callout": "^1.0.0",
     "@psu-ooe/cta": "^2.1.0",
@@ -11,6 +12,7 @@
     "@psu-ooe/header": "^1.0.0",
     "@psu-ooe/heading": "^2.0.1",
     "@psu-ooe/page-title-banner-plain": "^1.0.0",
+    "@psu-ooe/read-more": "^2.0.2",
     "@psu-ooe/social-icon": "^2.0.0",
     "@psu-ooe/social-icons": "^2.0.0"
   }

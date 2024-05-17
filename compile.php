@@ -29,6 +29,10 @@ $twig->addFunction(new TwigFunction('get_component_stylesheets', function () {
   $manifests = [];
   foreach (glob('node_modules/@psu-ooe/*/package.json') as $manifest) {
     $manifest_json = json_decode(file_get_contents($manifest), TRUE, 512, JSON_THROW_ON_ERROR);
+    // @TODO: Remove after form styles land...
+    if ($manifest_json['name'] === '@psu-ooe/base') {
+      continue;
+    }
     $manifests[$manifest_json['name']] = $manifest_json;
   }
   // Recursively sort the manifests until dependency order is met...
@@ -65,11 +69,17 @@ $twig->addFunction(new TwigFunction('get_component_stylesheets', function () {
   return $styles;
 }));
 
-$config = json_decode(file_get_contents('config.json'), TRUE, 512, JSON_THROW_ON_ERROR);
-$artifact = $twig->render('index.twig', $config);
-
 if (!file_exists('dist') && !mkdir('dist') && !is_dir('dist')) {
   throw new \RuntimeException(sprintf('Directory "%s" was not created', 'dist'));
 }
 
-file_put_contents('dist/index.html', $artifact);
+$config = json_decode(file_get_contents('config.json'), TRUE, 512, JSON_THROW_ON_ERROR);
+foreach (glob('src/*.twig') as $filename) {
+  $filename = basename($filename);
+  $dest_name = str_replace('.twig', '.html', $filename);
+  $artifact = $twig->render($filename, $config);
+  file_put_contents("dist/$dest_name", $artifact);
+
+}
+
+
