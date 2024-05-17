@@ -58,7 +58,9 @@
     <button class="cta-block" aria-describedby="email-opt-out">Opt out of email</button>
     <br>
     <br>
-    <p id="email-opt-out">If you opt out you will be removed from promotional services, programs, and events. You will still receive details about your enrollment.</p>
+    <div class="wysiwyg">
+      <p id="email-opt-out">If you opt out you will be removed from promotional services, programs, and events. You will still receive details about your enrollment.</p>
+    </div>
   </form>
   <br>
   {% include '@psu-ooe/divider/divider.twig' with {
@@ -71,7 +73,9 @@
     <button class="cta-block" aria-describedby="email-opt-out">Opt out of text</button>
     <br>
     <br>
-    <p><a href="#">Privacy policy and SMS Terms and Conditions</a></p>
+    <div class="wysiwyg">
+      <p><a href="#">Privacy policy and SMS Terms and Conditions</a></p>
+    </div>
   </form>
 {% endset %}
 {% include '@psu-ooe/callout/callout.twig' with {
