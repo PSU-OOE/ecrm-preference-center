@@ -94,4 +94,7 @@ $artifact = $twig->render('index.twig', [
     'The Pennsylvania State University © [[COPYRIGHT_YEAR]]' => 'https://www.psu.edu/copyright-information',
   ],
 ]);
+if (!mkdir('dist') && !is_dir('dist')) {
+  throw new \RuntimeException(sprintf('Directory "%s" was not created', 'dist'));
+}
 file_put_contents('dist/index.html', $artifact);
