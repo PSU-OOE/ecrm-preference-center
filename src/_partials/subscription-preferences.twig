@@ -70,11 +70,11 @@
   {% include '@psu-ooe/heading/heading.twig' with { level: 3, content: 'Text'} only %}
   <form action="#">
     <p class="text text--size-large text--weight-semibold">You are currently opted into text messages.</p>
-    <button class="cta-block" aria-describedby="email-opt-out">Opt out of text</button>
+    <button class="cta-block" aria-describedby="privacy-sms-terms">Opt out of text</button>
     <br>
     <br>
     <div class="wysiwyg">
-      <p><a href="#">Privacy policy and SMS Terms and Conditions</a></p>
+      <p id="privacy-sms-terms"><a href="https://www.worldcampus.psu.edu/privacy-policy">Privacy policy and SMS Terms and Conditions</a></p>
     </div>
   </form>
 {% endset %}
