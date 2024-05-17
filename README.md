@@ -1,0 +1,2 @@
+# ECRM Preference Center
+Pull the latest [stable release](https://github.com/PSU-OOE/ecrm-preference-center/releases) or check out https://psu-ooe.github.io/ecrm-preference-center for the bleeding edge.
