@@ -9,18 +9,10 @@ jobs:
     steps:
       - name: Checkout application
         uses: actions/checkout@v4
-      - run: echo "npmRegistries:" >> .yarnrc.yml
-      - run: echo '  "https://npm.pkg.github.com":' >> .yarnrc.yml
-      - run: echo -n '    npmAuthToken:' >> .yarnrc.yml
-      - run: echo ' ${{secrets.GITHUB_TOKEN}}' >> .yarnrc.yml
-      - run: echo -n '    npmAlwaysAuth:' >> .yarnrc.yml
-      - run: echo ' true' >> .yarnrc.yml
-      - run: echo 'npmScopes:' >> .yarnrc.yml
-      - run: echo '  psu-ooe:' >> .yarnrc.yml
-      - run: echo -n '    npmAlwaysAuth:' >> .yarnrc.yml
-      - run: echo ' true' >> .yarnrc.yml
-      - run: echo -n '    npmRegistryServer:' >> .yarnrc.yml
-      - run: echo ' "https://npm.pkg.github.com"' >> .yarnrc.yml
+      - name: Authenticate with NPM registry
+        run: |
+          echo "@psu-ooe:registry=https://npm.pkg.github.com" >> .npmrc
+          echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> .npmrc
       - uses: actions/setup-node@v4
         with:
           node-version: '20.x'
