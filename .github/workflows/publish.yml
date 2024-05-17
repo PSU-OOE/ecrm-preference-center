@@ -26,6 +26,8 @@ jobs:
         uses: "ramsey/composer-install@v2"
       - name: Compile assets
         run: php compile.php
+      - name: Zip dist
+        run: zip -r artifacts.zip dist
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
@@ -45,6 +47,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/index.html
-          asset_name: index.html
-          asset_content_type: text/html
+          asset_path: artifacts.zip
+          asset_name: artifacts.zip
+          asset_content_type: application/zip
