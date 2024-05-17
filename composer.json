@@ -1,5 +1,5 @@
 {
-    "name": "psu-ooe/ecrm-ds-demo",
+    "name": "psu-ooe/ecrm-preference-center",
     "require-dev": {
         "twig/twig": "^3.0"
     }

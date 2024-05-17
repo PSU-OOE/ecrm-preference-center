@@ -1,8 +1,8 @@
 {
-  "name": "@psu-ooe/ecrm-ds-demo",
+  "name": "@psu-ooe/ecrm-preference-center",
   "version": "1.0.0",
   "author": "Luke Leber",
-  "description": "Basic design system integration demo (without Twig)",
+  "description": "Front-end design for the ECRM Preference Center",
   "dependencies": {
     "@psu-ooe/alert": "^1.0.4",
     "@psu-ooe/background-container": "^3.0.1",
