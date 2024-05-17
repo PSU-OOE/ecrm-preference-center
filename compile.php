@@ -65,36 +65,11 @@ $twig->addFunction(new TwigFunction('get_component_stylesheets', function () {
   return $styles;
 }));
 
-$artifact = $twig->render('index.twig', [
-  'phone' => '814-865-5403',
-  'email' => 'worldcampus@psu.edu',
-  'phone_toll_free' => '800-252-3592',
-  'fax' => '814-865-3290',
-  'address_line_1' => 'The Pennsylvania State University',
-  'address_line_2' => '128 Outreach Building',
-  'address_city' => 'University Park',
-  'address_state' => 'PA',
-  'address_zip' => '16802',
-  'social_platforms' => [
-    'instagram' => 'https://www.instagram.com/pennstateworldcampus/',
-    'facebook' => 'https://www.facebook.com/psuworldcampus',
-    'linkedin' => 'https://www.linkedin.com/company/penn-state-world-campus',
-    'twitter' => 'https://twitter.com/PSUWorldcampus',
-    'youtube' => 'https://www.youtube.com/user/PSUWorldCampus',
-    'flickr' => 'https://www.flickr.com/photos/psuworldcampus/albums',
-    'pinterest' => 'https://www.pinterest.com/PSUWorldCampus/',
-    'blog' => 'https://blog.worldcampus.psu.edu/',
-  ],
-  'legal_links' => [
-    'Accessibility' => 'https://www.worldcampus.psu.edu/accessibility',
-    'Equal Opportunity' => 'https://policy.psu.edu/policies/hr11',
-    'Nondiscrimination' => 'https://policy.psu.edu/policies/ad85',
-    'Privacy' => 'https://www.worldcampus.psu.edu/privacy-policy',
-    'Consumer Information and Disclosures' => 'https://www.worldcampus.psu.edu/consumer-information-and-disclosures',
-    'The Pennsylvania State University © [[COPYRIGHT_YEAR]]' => 'https://www.psu.edu/copyright-information',
-  ],
-]);
-if (!mkdir('dist') && !is_dir('dist')) {
+$config = json_decode(file_get_contents('config.json'), TRUE, 512, JSON_THROW_ON_ERROR);
+$artifact = $twig->render('index.twig', $config);
+
+if (!file_exists('dist') && !mkdir('dist') && !is_dir('dist')) {
   throw new \RuntimeException(sprintf('Directory "%s" was not created', 'dist'));
 }
+
 file_put_contents('dist/index.html', $artifact);
