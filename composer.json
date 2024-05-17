@@ -1,10 +1,5 @@
 {
     "name": "psu-ooe/ecrm-ds-demo",
-    "autoload": {
-        "psr-4": {
-            "PsuOoe\\EcrmDsDemo\\": "src/"
-        }
-    },
     "require-dev": {
         "twig/twig": "^3.0"
     }
