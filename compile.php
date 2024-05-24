@@ -29,10 +29,6 @@ $twig->addFunction(new TwigFunction('get_component_stylesheets', function () {
   $manifests = [];
   foreach (glob('node_modules/@psu-ooe/*/package.json') as $manifest) {
     $manifest_json = json_decode(file_get_contents($manifest), TRUE, 512, JSON_THROW_ON_ERROR);
-    // @TODO: Remove after form styles land...
-    if ($manifest_json['name'] === '@psu-ooe/base') {
-      continue;
-    }
     $manifests[$manifest_json['name']] = $manifest_json;
   }
   // Recursively sort the manifests until dependency order is met...
